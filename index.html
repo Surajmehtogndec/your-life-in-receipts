@@ -1,48 +1,423 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Digital scrapbook connecting memories via FAIE engine.">
-    <title>Your Life, In Receipts</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+
+    <!-- =====================================================
+         BASIC DOCUMENT META
+    ====================================================== -->
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Your Life, In Receipts transforms everyday digital fragments such as purchases, music and notes into connected personal stories.">
+
+    <meta name="author"
+          content="Your Life, In Receipts">
+
+    <meta name="theme-color"
+          content="#111827">
+
+    <meta name="color-scheme"
+          content="light">
+
+    <meta name="referrer"
+          content="strict-origin-when-cross-origin">
+
+    <title>Your Life, In Receipts — Discover the Story Behind Your Moments</title>
+
+
+    <!-- =====================================================
+         PERFORMANCE
+    ====================================================== -->
+
+    <link rel="preconnect"
+          href="https://cdn.jsdelivr.net">
+
+    <link rel="preconnect"
+          href="https://cdnjs.cloudflare.com">
+
+
+    <!-- =====================================================
+         BOOTSTRAP
+    ====================================================== -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+
+    <!-- =====================================================
+         APPLICATION CSS
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="css/style.css">
 </head>
+
+
 <body>
-    <header class="text-center" role="banner">
-        <h1 class="page-title">Your Life, In Receipts 🧾</h1>
-        <p class="page-subtitle">Click any fragment to discover its hidden story.</p>
-        
-        <section class="search-container mt-4" role="search" aria-label="Memory Search">
-            <div class="btn-group mb-4 gap-2" role="group" aria-label="Filter Memories" id="filter-buttons">
-                <button type="button" class="btn filter-btn active" data-filter="all" aria-pressed="true">Everything</button>
-                <button type="button" class="btn filter-btn" data-filter="purchase" aria-pressed="false">Purchases</button>
-                <button type="button" class="btn filter-btn" data-filter="music" aria-pressed="false">Music</button>
-                <button type="button" class="btn filter-btn" data-filter="household" aria-pressed="false">Notes</button>
-            </div>
-            <div class="input-group shadow-sm">
-                <label for="search-input" class="visually-hidden">Search memories</label>
-                <input type="text" id="search-input" class="form-control border-0 py-2" placeholder="Search for a song, shop, or moment..." aria-label="Search field">
-            </div>
-        </section>
+
+    <!-- =====================================================
+         SKIP NAVIGATION
+    ====================================================== -->
+
+    <a href="#main-content"
+       class="skip-link">
+        Skip to main content
+    </a>
+
+
+    <!-- =====================================================
+         HEADER / HERO
+    ====================================================== -->
+
+    <header class="text-center"
+            role="banner">
+
+        <div class="container">
+
+            <!-- Product identity -->
+
+            <p class="eyebrow"
+               aria-hidden="true">
+                PERSONAL MEMORY ENGINE
+            </p>
+
+
+            <!-- Main title -->
+
+            <h1 class="page-title">
+                Your Life, In Receipts 🧾
+            </h1>
+
+
+            <!-- Main value proposition -->
+
+            <p class="page-subtitle">
+                Your everyday fragments already tell a story.
+                <br class="d-none d-md-block">
+                Discover the connections hiding between them.
+            </p>
+
+
+            <!-- =================================================
+                 MEMORY SEARCH AREA
+            ================================================== -->
+
+            <section class="search-container mt-4"
+                     role="search"
+                     aria-label="Search and filter memories">
+
+
+                <!-- =================================================
+                     FILTERS
+                ================================================== -->
+
+               <div class="filter-bar" role="group" aria-label="Memory filters">
+    <button class="filter-btn active" data-filter="all">
+        All Moments
+    </button>
+
+    <button class="filter-btn" data-filter="music">
+        🎵 Music
+    </button>
+
+    <button class="filter-btn" data-filter="purchase">
+        🛍️ Purchases
+    </button>
+
+    <button class="filter-btn" data-filter="household">
+        🏠 Daily Life
+    </button>
+
+    <button class="filter-btn" data-filter="connected">
+        🔗 Connected Stories
+    </button>
+</div>
+
+
+                <!-- =================================================
+                     SEARCH INPUT
+                ================================================== -->
+
+                <div class="input-group shadow-sm">
+
+                    <span class="input-group-text border-0"
+                          aria-hidden="true">
+                        🔎
+                    </span>
+
+                    <label for="search-input"
+                           class="visually-hidden">
+                        Search your memories
+                    </label>
+
+                   <input
+    type="search"
+    id="search-input"
+    role="combobox"
+    aria-autocomplete="list"
+    aria-controls="search-suggestions"
+    aria-expanded="false"
+    autocomplete="off"
+    class="form-control border-0 py-3"
+    placeholder="Search for a song, shop, note or moment..."
+    aria-label="Search memories"
+    aria-describedby="search-help"
+    spellcheck="false">
+
+                </div>
+
+
+                <!-- Search explanation -->
+
+                <p id="search-help"
+                   class="form-text mt-2">
+                    Search across your connected memory fragments.
+                </p>
+
+
+<button
+    type="button"
+    id="constellation-btn"
+    class="btn btn-outline-dark rounded-pill px-4 py-2 mt-3">
+    ✨ Memory Constellation
+</button>
+
+            </section>
+
+        </div>
+
     </header>
 
-    <main role="main">
-        <section id="scrapbook-canvas" aria-live="polite" aria-label="Memory Canvas">
-            <div id="loading-spinner" class="text-center w-100 mt-5">
-                <div class="spinner-border text-secondary" role="status">
-                    <span class="visually-hidden">Loading engine data...</span>
+
+    <!-- =====================================================
+         MAIN APPLICATION
+    ====================================================== -->
+
+    <main id="main-content"
+          role="main">
+
+        <div class="container">
+
+
+            <!-- =================================================
+                 MEMORY CANVAS
+            ================================================== -->
+
+            <section id="scrapbook-canvas"
+                     aria-label="Memory canvas"
+                     aria-live="polite"
+                     aria-busy="true">
+
+
+                <!-- =================================================
+                     LOADING STATE
+                ================================================== -->
+
+                <div id="loading-spinner"
+                     class="text-center w-100 mt-5"
+                     role="status">
+
+                    <div class="spinner-border text-secondary"
+                         aria-hidden="true">
+                    </div>
+
+                    <p class="mt-3 mb-1 text-muted">
+                        Gathering your fragments...
+                    </p>
+
+                    <span class="small text-muted">
+                        Looking for meaningful connections between your memories.
+                    </span>
+
+                    <span class="visually-hidden">
+                        Loading memory data
+                    </span>
+
                 </div>
-                <p class="mt-2 text-muted">Gathering fragments...</p>
-            </div>
-        </section>
-        
-        <nav class="text-center mt-5 mb-5" id="load-more-container" style="display: none;" aria-label="Pagination">
-            <button id="load-more-btn" class="btn btn-dark px-4 py-2 rounded-pill shadow-sm" aria-label="Load more memories">Reveal More</button>
-        </nav>
+
+            </section>
+
+
+            <!-- =================================================
+                 EMPTY STATE
+            ================================================== -->
+
+            <section id="empty-state"
+                     class="text-center py-5 d-none"
+                     aria-live="polite"
+                     aria-labelledby="empty-state-title">
+
+                <div class="empty-state-icon"
+                     aria-hidden="true">
+                    🔍
+                </div>
+
+                <h2 id="empty-state-title">
+                    No memories found
+                </h2>
+
+                <p class="text-muted mx-auto"
+                   style="max-width: 520px;">
+                    No memory fragments match your current search or filter.
+                    Try a different keyword or explore everything.
+                </p>
+
+                <button
+                    type="button"
+                    id="clear-search-btn"
+                    class="btn btn-outline-dark rounded-pill px-4">
+                    Clear Search
+                </button>
+
+            </section>
+
+
+            <!-- =================================================
+                 ERROR STATE
+            ================================================== -->
+
+            <section id="error-state"
+                     class="text-center py-5 d-none"
+                     role="alert"
+                     aria-labelledby="error-state-title">
+
+                <div class="error-state-icon"
+                     aria-hidden="true">
+                    ⚠️
+                </div>
+
+                <h2 id="error-state-title">
+                    Something went wrong
+                </h2>
+
+                <p class="text-muted mx-auto"
+                   style="max-width: 560px;">
+                    We couldn't load your memory fragments.
+                    Please check the data files and try again.
+                </p>
+
+                <button
+                    type="button"
+                    id="retry-btn"
+                    class="btn btn-dark rounded-pill px-4">
+                    Try Again
+                </button>
+
+            </section>
+
+
+            <!-- =================================================
+                 ACCESSIBLE RESULT STATUS
+            ================================================== -->
+
+            <p id="result-status"
+               class="visually-hidden"
+               aria-live="polite"
+               aria-atomic="true">
+            </p>
+
+
+            <!-- =================================================
+                 LOAD MORE
+            ================================================== -->
+
+            <nav id="load-more-container"
+                 class="text-center mt-5 mb-5"
+                 style="display: none;"
+                 aria-label="Memory pagination">
+
+                <button
+                    type="button"
+                    id="load-more-btn"
+                    class="btn btn-dark px-4 py-2 rounded-pill shadow-sm"
+                    aria-label="Load more memories">
+
+                    Reveal More
+
+                </button>
+
+            </nav>
+
+        </div>
+
     </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" defer></script>
-    <script src="app.js" defer></script>
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="text-center py-5"
+            role="contentinfo">
+
+        <div class="container">
+
+            <div class="footer-divider mb-4"></div>
+
+            <p class="mb-1">
+                <strong>Your Life, In Receipts</strong>
+            </p>
+
+            <p class="small text-muted mb-2">
+                Turning everyday fragments into meaningful stories.
+            </p>
+
+            <p class="small text-muted mb-0">
+                Purchases · Music · Notes · Connections
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT DISABLED MESSAGE
+    ====================================================== -->
+
+    <noscript>
+
+        <div class="alert alert-warning text-center m-3"
+             role="alert">
+
+            <strong>JavaScript is required.</strong>
+
+            <span>
+                Please enable JavaScript to explore your
+                interactive memory scrapbook.
+            </span>
+
+        </div>
+
+    </noscript>
+
+
+    <!-- =====================================================
+         EXTERNAL DEPENDENCIES
+    ====================================================== -->
+
+    <!-- PapaParse: CSV parsing -->
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"
+        defer>
+    </script>
+
+
+    <!-- =====================================================
+         APPLICATION JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        src="js/app.js"
+        defer>
+    </script>
+
 </body>
+
 </html>
